@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <title>
+      Form
+    </title>
+  </head>
+  <body>
+    <H1>Buat Account Baru!</H1> 
+      <h2>Sign Up Form</h2>
+        <form action="./wellcome.html" method="submit" required>
+            <label for="fname">First name:</label><br>
+              <input type="text" id="fname" name="fname" required><br>
+            <label for="lname">Last name:</label><br>
+              <input type="text" id="lname" name="lname" required><br><br>
+    
+          <label for="" >Gender</label><br>
+              <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label><br>
+              <input type="radio" id="css" name="gender" value="female" required>
+                <label for="female">Female</label><br>
+              <input type="radio" id="other" name="gender" value="other" required>
+                <label for="other">Other</label><br><br>
+          
+          <label for="nas">Nasionality:</label><br>
+            <select id="nas" required>
+              <option value="Indonesia">Indonesia</option>
+              <option value="English">English</option>
+              <option value="other">Other</option>
+            </select><br><br>
+          
+          <label for="">Language Spoken</label><br>
+              <input type="checkbox" id="vehicle1" name="vehicle1" value="indo">
+              <label for="vehicle1"> Indonesia</label><br>
+              <input type="checkbox" id="vehicle2" name="vehicle2" value="eng">
+              <label for="vehicle2">English</label><br><br>
+      
+          <label for="bio">Bio :</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="50" required>
+            </textarea><br><br>
+      
+          <button type="Submit">Sign Up</button>
+      </form>
+  </body>
+</html>

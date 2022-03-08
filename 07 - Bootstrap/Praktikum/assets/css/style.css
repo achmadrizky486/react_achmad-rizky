@@ -1,17 +1,16 @@
-
-.text-success{
+.text-success {
   color: #68b94b !important;
 }
 
-#simple h1{
+#simple h1 {
   font-family: 'Open+Sans', serif;
 }
 
-#simple a{
+#simple a {
   text-decoration: none;
 }
 
-#simple .h1-color{
+#simple .h1-color {
   color: red;
 }
 
@@ -20,5 +19,23 @@
 }
 
 .footer {
-	background-color: black;
+  background-color: black;
+  /*padding-left: 100px;*/
+}
+
+.read {
+  color: grey;
+}
+
+.nc {
+  color: black;
+}
+
+.section {
+  color: white;
+}
+
+.cr {
+  text-align: center;
+  padding-bottom: 25px;
 }

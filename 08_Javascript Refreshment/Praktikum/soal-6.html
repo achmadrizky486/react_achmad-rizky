@@ -11,11 +11,9 @@
 <body>
     <script>
         let arr = [1.5, 2.56, 5.1, 12.33]
+        let bulat = arr.map(Math.round)
+        arr = bulat;
         console.log(arr);
-        let bulat = arr.map(function (num) {
-            return num * 2
-        });
-        console.log(bulat);
     </script>
 </body>
 

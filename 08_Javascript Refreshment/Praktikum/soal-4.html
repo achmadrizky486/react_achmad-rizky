@@ -11,11 +11,12 @@
 <body>
     <script>
         let bdays = ['10-17', '05-19', '20-19'];
+        const a = bdays[0].replace('-', '/');
+        const b = bdays[1].replace('-', '/');
+        const c = bdays[2].replace('-', '/');
+        let replace = a + ", " + b + ", " + c;
+        bdays = replace.split(",");
         console.log(bdays);
-        let coba = bdays.toString();
-        console.log(coba);
-        ganti = coba.replace('-', '/');
-        console.log(ganti);
     </script>
 </body>
 

@@ -1,18 +1,24 @@
-var a = 5;
+var no = 5;
 let b = "Kampus Merdeka";
+let a = b;
 const nama = "Budi";
-let terdaftar = false;
+// tugas b
+let terdaftar = true;
+// ------------
 let lengkap_arr = [a, b, nama, terdaftar];
+
+// tugas a
+// console.log(lengkap_arr[2]);
 
 function perkenalan() {
     let asal = "indonesia";
     return console.log(
-        "perkenalkan nama saya" +
-        nama +
-        "nomor urut" +
-        a +
-        "sekarang sedang mengikuti" +
-        b +
+        "perkenalkan nama saya" + " " +
+        nama + " " +
+        "nomor urut" + " " +
+        no + " " +
+        "sekarang sedang mengikuti" + " " +
+        b + " " +
         "berasal dari " +
         asal
     );
@@ -21,8 +27,9 @@ function perkenalan() {
 if (terdaftar === true) {
     console.log(nama + " " + "terdaftar sebagai kegiatan kampus merdeka");
 }
-a = b;
-nama = b;
-console.log("asal diakses = " + asal);
+
+console.log("array = " + nama);
 console.log("a adalah = " + a);
 console.log("b adalah = " + b);
+
+perkenalan();

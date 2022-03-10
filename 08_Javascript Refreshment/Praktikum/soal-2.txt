@@ -1,0 +1,6 @@
+Jawaban soal no 2.
+
+2. a) Tidak bisa tampil karena variabel terdaftar masih bernilai false
+   b) Karena perbedaan yang paling mendasar adalah bahwa let dan var dapat ubah isinya kembali sementara const tidak bisa.
+      sebelumnya, variabel nama diisi dengan perintah const, jadi variabel nama tidak bisa diubah lagi.
+   c) Bisa, karena tidak ada pengaruhnya untuk line 28

@@ -1,7 +1,5 @@
 class user {
-    var id;
-    var username;
-    var password;
+    var id, username, password;
 }
 
 class userservice {

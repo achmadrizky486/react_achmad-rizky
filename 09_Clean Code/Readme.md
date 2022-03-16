@@ -1,16 +1,14 @@
 # Achmad Rizky 
 ## Summary
 
-## ==== Javascript Refreshment ====
+## ==== Clean Code ====
 
-- JavaScript adalah bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer, dapat disisipkan dalam halaman web menggunakan tag SCRIPT.
+- Clean Code adalah kode yang formatnya benar dan disusun dengan baik dan rapi agar kode programnya mudah dibaca, dimengerti, ditelusuri oleh siapapun dan mudah untuk di costumize oleh siapapun jika nantinya akan ada perubahan atau Kode yang mudah dibaca, difahami, dan diubah oleh programmer.
 
-- Kelebihan JS diantaranya adalah :
-    1. Tidak butuh kompiler
-    2. Membuat web lebih menarik
-    3. Mudah dipelajari
-    4. Lebih cepat dan ringan daripada bahasa pemrograman lainnya
-    5. Dll
+- Berikut ini adalah karakteristik Clean Code  :
+    1. Mudah dieja dan dicari
+    2. Singkat namun mendeskripsikan konteks
+    3. Mudah difahami
 
-- Bisa digunakan sebagai front end maupun back end
+- KISS merupakan singkatan dari Keep It So Simple
 

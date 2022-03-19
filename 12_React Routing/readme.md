@@ -1,11 +1,9 @@
 # Achmad Rizky 
 ## Summary
 
-## ==== HTML ====
+## ==== React Routing ====
 
-- HTML adalah kepanjangan dari Hypertext Markup Language yang mana ini adalah sebuah bahasa yang berfungsi untuk membuat sebuah website 
-- frontend adalah sebuah bagian dari website yang membuat tampilan lebih menarik kepada user
-- tag yang menjadi setruktur utama bagi html ada 5 yaitu tag DOCTYPE html, html, head, tittle, dan body
+- Routing sendiri adalah proses pemetaan antara sebuah URL ke dalam sebuah halaman yang terdapat konten / UI (User Interface) sesuai dengan URL yang dituju.
 
-## === Note ====
-Mohon maaf tadi saya pakai laptop temen saya, belum logout github, jadi ada commit dari user lain (teman saya)
+- Ada beberapa library yang bisa digunakan, diantara library yang sangat familiar adalah react-router dan reach/router
+- Library react-router-dom dapat diinstall dengan menjalankan perintah "yarn add react-router-dom" atau "npm i react-router-dom"

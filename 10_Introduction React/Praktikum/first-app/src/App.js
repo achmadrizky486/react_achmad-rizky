@@ -8,7 +8,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <noscript > You need to enable JavaScript to run this app. </noscript>
+        <noscript> You need to enable JavaScript to run this app. </noscript>
         <header>
           <div class="container">
             <div class="row align-items-center">

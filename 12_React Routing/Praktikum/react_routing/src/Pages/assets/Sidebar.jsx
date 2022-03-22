@@ -7,9 +7,9 @@ export default function Sidebar (){
         <> 
         <div className={Styles.Sidebar}>
             <ul className={Styles.list}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/About_app">About App</Link></li>
-                <li><Link to="/About_author">About Author</Link></li>
+                <li className={Styles.li}><Link to="/" className={Styles.link}>Home</Link></li>
+                <li className={Styles.li}><Link to="/About_app" className={Styles.link}>About App</Link></li>
+                <li className={Styles.li}><Link to="/About_author" className={Styles.link}>About Author</Link></li>
             </ul>
         </div>
         </>

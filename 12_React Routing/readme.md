@@ -1,7 +1,7 @@
 # Achmad Rizky 
 ## Summary
 
-## ==== React Routing ====
+## ==== React Fundamental ====
 
 - Routing sendiri adalah proses pemetaan antara sebuah URL ke dalam sebuah halaman yang terdapat konten / UI (User Interface) sesuai dengan URL yang dituju.
 

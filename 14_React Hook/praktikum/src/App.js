@@ -1,20 +1,12 @@
-import React from 'react';
-import Contact_Us from './Contact_Us';
-import Home from './Home';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+import Home from "./EventHandling/Home";
 
-  render() {
-    return (
-      <>
-        <Home />
-        {/* <Contact_Us /> */}
-      </>
-    )
-  }
+function App() {
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
 
 export default App;

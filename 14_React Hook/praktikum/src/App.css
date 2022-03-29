@@ -1,5 +1,11 @@
 .App {
-  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.tabel {
+  border-radius: 50;
 }
 
 .App-logo {

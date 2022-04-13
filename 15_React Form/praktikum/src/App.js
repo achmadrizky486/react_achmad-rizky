@@ -1,16 +1,12 @@
 import React from 'react'
-import Box from './pages/components/Box'
-import Header from './pages/components/Header'
-import Todoapp from './pages/Todoapp'
-import { todoList } from './dataApp';
+import Form from './pages/Form'
 
 const App = () => {
   return (
-    <>
-      {/* <Header /> */}
-      {/* <Box /> */}
-      <Todoapp todo={todoList} />
-    </>
+    <div>
+      <h2 style={{ textAlign: "center" }}>Pendaftaran Peserta Coding Bootcamp</h2>
+      <Form />
+    </div>
   )
 }
 

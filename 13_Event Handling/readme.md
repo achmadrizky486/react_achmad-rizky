@@ -1,8 +1,83 @@
-# Achmad Rizky 
+# Achmad Rizky
+
 ## Summary
 
-## ==== CSS ====
+## ==== Event Handling====
 
-- CSS adalah bahasa Cascading Style Sheet dan biasanya digunakan untuk mengatur tampilan elemen yang tertulis dalam bahasa markup, seperti HTML. CSS berfungsi untuk memisahkan konten dari tampilan visualnya di situs. 
-- Selector mengarah ke elemen HTML yang ingin diubah tampilannya. Declaration block memuat satu atau lebih banyak deklarasi (declaration) yang dipisahkan dengan tanda titik koma.
-- Setiap deklarasi menyertakan nama dan value dari properti CSS, yang dipisahkan dengan tanda koma. Umumnya deklarasi CSS diakhiri dengan tanda titik koma, sedangkan declaration block dikelilingi oleh tanda kurung kurawal.
+# Event Handling
+
+Kita ambil penjelasan bagaimana React menghandle sebuah _event_ dari dokumentasi [React](https://reactjs.org/docs/handling-events.html) :
+
+Handling event pada React mirip dengan handling event pada DOM element, namun dengan sedikit perbedaan:
+
+- React event menggunakan **camelCase**, bukan **lowercase**
+- Handler untuk event adalah sebuah function yang ditulis diantara curly braces `{}` dan tidak ditulis dalam bentuk string
+
+## **Menambahkan Event**
+
+Event React ditulis dalam sintaks camelCase:
+
+`onClick` bukannya `onclick`.
+
+Penangan event yang sebenarnya ditulis di dalam kurung kurawal:
+
+`onClick={shoot}` bukannya `onClick="shoot()"`.
+
+React:
+
+`<button onClick={shoot}>Take the Shot!</button>`
+
+HTML:
+
+` <``button ` ` onclick``=``"shoot()"``>Take the Shot!</``button``> `
+
+Kita ambil contoh code pada pembahasan setState() sebelumnya:
+
+    import React, { useState } from 'react';
+
+        export default function App() {
+          const [state, setState] = useState('brachio');
+
+          const handleChange = () => {
+            setState('t-rex');
+          };
+
+          return (
+            <div>
+              <h1>Hello Devsaurus</h1>
+              <p>My Name is {state}</p>
+              <button onClick={handleChange}>Change Name</button>
+            </div>
+          );
+        }
+
+Event klik button pada React tidak ditulis **onclick** tapi **onClick**.
+
+Event handler bernama **handleChange** berfungsi untuk menghandle event onClick, yang berarti ketika button di klik maka function bernama handleChange akan dieksekusi.
+
+## Event handler dengan Argument
+
+    import React, { useState } from 'react';
+
+    export default function App() {
+      const [state, setState] = useState('brachio');
+
+      const handleChange = (name) => {
+        setState(name);
+      };
+
+      return (
+        <div>
+          <h1>Hello Devsaurus</h1>
+          <p>My Name is {state}</p>
+          <button onClick={() => handleChange('t-rex')}>Change Name</button>
+        </div>
+      );
+    }
+
+Untuk event handler dengan argument kita harus menggunakan arrow function(untuk function component):
+
+    <button onClick={() => handleChange('t-rex')}>Change Name</button>
+
+Dan kita tidak bisa menulisnya seperti ini
+`<button onClick={handleChange('t-rex')}>Change Name</button>`

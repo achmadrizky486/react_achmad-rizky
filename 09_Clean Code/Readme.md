@@ -38,7 +38,7 @@ Sebagai berikut :
 
 **3. Scope Variable**
 
-Kesepakatan penggunaan tanda bracket (**{ }**) untuk penerapan score variable penting. Selain menyamakan semua kode program, juga akan mempermudah di dalam melihat kode program apabila sudah mencapai ribuan baris.
+Kesepakatan penggunaan tanda bracket (**{ }**) untuk penerapan score variable penting. Selain menyamakan semua kode program, juga akan mempermudah di dalam melihat kode program apabila sudah mencapai ribuan baris atau lebih.
 
 **4. Percabangan**
 

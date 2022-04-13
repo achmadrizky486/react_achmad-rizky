@@ -10,11 +10,11 @@ Hypertext Markup Language atau HTML adalah bahasa markup standar yang digunakan 
 
 Sejarah HTML dimulai oleh [Tim Berners-Lee](https://en.wikipedia.org/wiki/Tim_Berners-Lee), seorang ahli fisika di lembaga penelitian CERN yang berlokasi di Swiss. Versi pertamanya dirilis pada tahun 1991, dengan 18 tag. Sejak saat itu, setiap kali ada versi barunya, pasti akan selalu ada tag dan attribute (tag modifier) yang juga baru.
 
-Ketika bekerja dengan bahasa markup ini , Anda menggunakan struktur kode sederhana (tag dan _attribute_) untuk _mark up_ halaman website. Misalnya, Anda membuat sebuah paragraf dengan menempatkan _enclosed text_ di antara tag pembuka < p>\_ dan tag penutup < /p>.
+Ketika bekerja dengan bahasa markup ini , kita menggunakan struktur kode sederhana (tag dan _attribute_) untuk _mark up_ halaman website. Misalnya, kita membuat sebuah paragraf dengan menempatkan _enclosed text_ di antara tag pembuka < p>\_ dan tag penutup < /p>.
 
 Berkat popularitasnya yang terus meningkat, bahasa markup ini kini dianggap sebagai standar web resmi. Spesifikasi HTML dikelola dan dikembangkan oleh World Wide Web Consortium (W3C). Berdasarkan [HTML Element Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element) milik Mozilla Developer Network, saat ini ada 140 tag HTML, meskipun sebagiannya sudah tidak lagi didukung oleh beberapa versi terbaru browser.
 
-Kemudian, pada tahun 2014, **HTML5** mulai diperkenalkan. Dengan diperkenalkannya HTML5, terdapat semantic baru seperti < artcile>, < header>, dan < footer> yang memperjelas bagian-bagian dalam konten. Nah, setelah Anda tahu apa itu HTML, selanjutnya kami akan membahas cara kerjanya.
+Kemudian, pada tahun 2014, **HTML5** mulai diperkenalkan. Dengan diperkenalkannya HTML5, terdapat semantic baru seperti < artcile>, < header>, dan < footer> yang memperjelas bagian-bagian dalam konten. Nah, setelah kita tahu apa itu HTML, selanjutnya kami akan membahas cara kerjanya.
 
 ## Bagaimana Cara Kerja HTML?
 
@@ -42,7 +42,7 @@ Berikut **kelebihan HTML:**
 
 Kemudian, berikut adalah **kekurangan HTML:**
 
-- Umumnya digunakan untuk halaman web statis. Untuk fitur dinamis, Anda bisa menggunakan JavaScript atau bahasa backend, seperti PHP.
+- Umumnya digunakan untuk halaman web statis. Untuk fitur dinamis, kita bisa menggunakan JavaScript atau bahasa backend, seperti PHP.
 - Tidak bisa menjalankan _logic_. Alhasil, semua halaman web harus dibuat terpisah meskipun menggunakan elemen yang sama, seperti header dan footer.
 - Fitur baru tidak bisa digunakan dengan cepat di sebagian browser.
 - Perilaku browser terkadang sulit diprediksi. Misalnya, browser lama tidak selalu bisa merender tag yang lebih baru.

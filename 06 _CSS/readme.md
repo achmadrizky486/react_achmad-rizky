@@ -6,7 +6,7 @@
 
 ## Apa Itu CSS?
 
-CSS adalah singkatan dari Cascading Style Sheets. Kalau baca di kamus, cascading itu artinya air terjun. Tapi dalam hal ini, yang di maksud adalah, aliran dari suatu kode ke kode lain yang saling berhubungan.
+CSS adalah singkatan dari Cascading Style Sheets. Kalau baca di kamus, cascading itu artinya air terjun. Tetapi dalam hal ini, yang di maksud adalah, aliran dari suatu kode ke kode lain yang saling berhubungan.
 
 Jadi kalau di tulis lengkap dalam bahasa Indonesia kira-kira arti CSS adalah: kumpulan kode-kode yang berurutan dan saling berhubungan untuk mengatur format / tampilan suatu halaman HTML.
 

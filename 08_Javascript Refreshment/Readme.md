@@ -44,7 +44,7 @@ ECMAScript mengalami banyak revisi dan peningkatan hingga menjadi bahasa pemrogr
 
 ### JavaScript hingga sekarang
 
-Di tahun 2005, pamor JavaScript naik berkat adanya AJAX (​​Asynchronous JavaScript and XML). Library baru seperti JQuery dan MooTools dikembangkan untuk meminimalisir ketidakkonsistenan browser dan memudahkan untuk diterapkan pada design patterns.
+Di tahun 2005, pamor JavaScript naik berkat adanya AJAX (​​Asynchronous JavaScript and XML). Library baru seperti JQuery dan MooTools dikembangkan untuk meminimalisir ketidak-konsistenan browser dan memudahkan untuk diterapkan pada design patterns.
 
 Hingga kini, JavaScript menjadi bahasa skrip sisi klien yang banyak digunakan. Menurut data statistik, di tahun 2016 sebanyak 92% _website_ menggunakan JavaScript untuk menarik para pengunjung, termasuk situs-situs ternama seperti Google dan Facebook.
 

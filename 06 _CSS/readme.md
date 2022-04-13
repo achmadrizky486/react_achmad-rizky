@@ -1,8 +1,23 @@
-# Achmad Rizky 
+# Achmad Rizky
+
 ## Summary
 
 ## ==== CSS ====
 
-- CSS adalah bahasa Cascading Style Sheet dan biasanya digunakan untuk mengatur tampilan elemen yang tertulis dalam bahasa markup, seperti HTML. CSS berfungsi untuk memisahkan konten dari tampilan visualnya di situs. 
-- Selector mengarah ke elemen HTML yang ingin diubah tampilannya. Declaration block memuat satu atau lebih banyak deklarasi (declaration) yang dipisahkan dengan tanda titik koma.
-- Setiap deklarasi menyertakan nama dan value dari properti CSS, yang dipisahkan dengan tanda koma. Umumnya deklarasi CSS diakhiri dengan tanda titik koma, sedangkan declaration block dikelilingi oleh tanda kurung kurawal.
+## Apa Itu CSS?
+
+CSS adalah singkatan dari Cascading Style Sheets. Kalau baca di kamus, cascading itu artinya air terjun. Tapi dalam hal ini, yang di maksud adalah, aliran dari suatu kode ke kode lain yang saling berhubungan.
+
+Jadi kalau di tulis lengkap dalam bahasa Indonesia kira-kira arti CSS adalah: kumpulan kode-kode yang berurutan dan saling berhubungan untuk mengatur format / tampilan suatu halaman HTML.
+
+## Keuntungan Penggunaan CSS
+
+Jika anda memiliki beberapa halaman website dimana anda menggunakan font*arial* untuk tulisannya, lalu suatu hari anda bosan dengan arial dan ingin mengganti ke _trebuchet_, anda harus merubah satu per satu halaman website anda dan merubah tipe font dari _arial_ menjadi _trebuchet_.
+
+Dengan menggunakan css, dimana semua halaman web memakai css yang sama, anda cukup merubah satu baris kode css untuk merubah font di semua halaman web dari _arial_ ke _trebuchet_.
+
+Jadi, keuntungan menggunakan CSS, lebih praktis!
+
+## Kekurangan Penggunaan CSS
+
+Tidak semua browser mengartikan kode CSS dengan cara yang sama. Jadi kadang-kadang, tampilan web dengan CSS terlihat baik di browser yang satu, tapi berantakan di browser yang lain. Jadi anda harus memeriksa tampilan supaya terlihat baik di semua browser dan menambahkan kode-kode khusus browser tertentu jika memang dibutuhkan agar tampilan web anda terlihat baik di semua browser.

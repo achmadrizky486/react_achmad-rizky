@@ -1,11 +1,9 @@
-
-import Home from "./EventHandling/Home";
+import './App.css';
+import Home from './Pages/components/Home'
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <Home />
   );
 }
 

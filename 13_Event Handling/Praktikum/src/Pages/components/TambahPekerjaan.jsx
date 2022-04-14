@@ -1,4 +1,5 @@
 import { Component } from "react";
+import "./Todo.module.css";
 
 class tambahPekerjaan extends Component {
   state = {
@@ -37,10 +38,7 @@ class tambahPekerjaan extends Component {
   render() {
     return (
       <div>
-        <form
-          onSubmit={this.handleSubmit}
-          style={{ margin: "2rem", textAlign: "center" }}
-        >
+        <form onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Masukkan Pekerjaan..."

@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { v4 as uuidv4 } from "uuid";
 import ListPekerjaan from "./ListPekerjaan";
 import TambahPekerjaan from "./TambahPekerjaan";
+import "./Todo.module.css";
 
 class Home extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class Home extends Component {
         },
         {
           id: 2,
-          title: "mengerjakan Assigment",
+          title: "Mengerjakan Assigment",
           completed: false,
         },
       ],
@@ -32,7 +32,7 @@ class Home extends Component {
   render() {
     return (
       <>
-        <h1 style={{ textAlign: "center" }}>Todos</h1>
+        <h1>Todos</h1>
         <TambahPekerjaan tambahPekerjaan={this.tambahPekerjaan} />
         <ListPekerjaan
           data={this.state.data}

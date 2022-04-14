@@ -1,9 +1,10 @@
-.App {
+div>ul>li {
     margin: auto;
+    margin-bottom: 10px;
     width: 50%;
     padding: 10px;
-    color: red;
-  }
+}
+
 h1 {
     text-align: center;
 }

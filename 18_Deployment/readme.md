@@ -2,58 +2,62 @@
 
 ## Summary
 
-## ==== Testing ====
+## ==== Deployment====
 
-Mungkin banyak diantara developer yang ketika mendengar istilah **TDD** atau **_test-driven development_** akan merasa _overwhelmed,_ tapi sebenarnya TDD tidaklah menakutkan. Artikel ini dibuat untuk teman-teman yang ingin mengenal atau memulai TDD _practice_ pada front-end development, khususnya React.
+## Pengertian
 
-![](https://miro.medium.com/max/1400/1*vHHBwcUFUaHWXntSnqKdCA.png)
+Deployment adalah kegiatan yang bertujuan untuk menyebarkan aplikasi yang sudah kita buat. Harapannya aplikasi tersebut dapat diakses oleh banyak orang, tidak hanya oleh kita sendiri.
 
-Sedikit selingan, di wonderlabs, kami secara intensif menggunakan nodejs dan react untuk membangun aplikasi web dengan berbagai _scope_ dan skala, tapi tidak terbatas pada itu saja. Code quality adalah salah satu yang utama, oleh karena itu, testing juga menjadi sangat penting dalam mengembangkan sebuah aplikasi di wonderlabs.
+## Surge.sh
 
-# Manfaat Test
+Jika sebelumnya kita telah berhasil membuat React app menggunakan CRA, kali ini kita akan mencoba melakukan deployment menggunakan surge.sh. Surge.sh merupakan
+langkah pertama kita perlu meng-install package surge.sh secara global. Langkah selanjutnya, kita perlu melakukan persiapan dari React app yang telah kita, yakni dengan `yarn build` atau `npm build` . Dengan perintah tersebut, kita membuat React app kita dalam bentuk static sehingga dapat diserve oleh server surge
 
-Sebelum kita mulai, kenapa kita harus membuat test untuk aplikasi yang kita buat? Diantara manfaat membuat test adalah:
+![](https://cdn-images-1.medium.com/max/1600/1*yXVSjmXwkwG6zD5USbi-pA.png)Sukses deploy menggunakan surge.sh
 
-- Ketika aplikasi kita mempunyai _coverage_ yang baik (mayoritas _codebase_ tercover oleh test), Kita akan merasa percaya diri jika harus mengubah suatu bagian pada aplikasi kita. Saat kita mengubah bagian tersebut, dan ada bagian yang lain menjadi _broken_ kita akan segera mengetahuinya.
-- Mengurangi bug pada aplikasi. Walaupun testing tidak menjamin aplikasi kita bebas bug, tetapi kita bisa mencegah beberapa hal yang berpotensi menjadi bug.
-- Kita menjadi terbiasa mendesain sebelum mengerjakan. Beberapa studi telah dilakukan dan hasilnya TDD sangat efektif meningkatkan produktifitas, karena ada objektif yang harus kita capai, yaitu menjadikan semua test case passed.
-- Dan lain-lain.
-  Kode pengujian adalah praktik yang membingungkan bagi banyak pengembang. Itu bisa dimengerti karena menulis tes membutuhkan lebih banyak usaha, waktu, dan kemampuan untuk meramalkan kemungkinan kasus penggunaan. Startup dan pengembang yang bekerja pada proyek yang lebih kecil biasanya lebih suka mengabaikan tes sama sekali karena kurangnya sumber daya dan tenaga kerja.
+Yang perlu diperhatikan adalah, ketika diminta memasukkan path dari project kita adalah, kita perlu mengarahkan kepada folder `build` dari React app yang kita buat.
 
-Namun, ada beberapa alasan mengapa saya yakin Anda harus menguji komponen Anda:
+## Heroku
 
-1.  Ini membuat Anda merasa lebih percaya diri tentang kode Anda.
-2.  Tes meningkatkan produktivitas Anda.
+Heroku merupakan salah satu perusahaan penyedia layanan *Platform as a Service (PaaS). *Untuk dapat menggunakan layanan heroku, kita perlu melakukan:
 
-React juga tidak berbeda. Ketika seluruh aplikasi Anda mulai berubah menjadi tumpukan komponen yang sulit dipelihara, pengujian menawarkan stabilitas dan konsistensi. Menulis tes dari hari pertama akan membantu Anda menulis kode yang lebih baik, mendeteksi bug dengan mudah, dan mempertahankan alur kerja pengembangan yang lebih baik.
+- [Sign Up](https://signup.heroku.com/)
+- Install [command-lint tools (CLI)](https://devcenter.heroku.com/articles/heroku-cli) Heroku
 
-Dalam artikel ini, saya akan membawa Anda melalui segala sesuatu yang perlu Anda ketahui untuk menulis tes untuk komponen React Anda. Saya juga akan membahas beberapa teknik dan praktek-praktek terbaik saat kita melakukannya. Mari kita mulai!
+![](https://cdn-images-1.medium.com/max/1600/1*BhGIGjEx1aQFuYFP1n1UoQ.png)Tampilan ketika kita sukses install Heroku CLI
 
-## Testing Components dalam React
+Selanjutnya kita dapat menggunakan React app yang telah kita buat sebelumnya untuk dideploy ke Heroku dengan cara sebagai berikut:
 
-Pengujian adalah proses memverifikasi bahwa _test assertions_ kita benar dan bahwa mereka tetap benar sepanjang masa aplikasi. Test assertion ini adalah ekspresi boolean yang mengembalikan nilai true kecuali ada bug di kode Anda.
+```
+git init
 
-Misalnya, asersi bisa menjadi sesuatu yang sederhana seperti ini: "Ketika pengguna menavigasi ke / **login**, modal dengan id `#login` harus dirender." Jadi, jika ternyata Anda mengacaukan komponen masuk entah bagaimana, asersi akan kembali salah. Asersi tidak hanya terbatas pada apa yang diberikan — Anda juga dapat membuat asersi tentang bagaimana aplikasi merespons interaksi pengguna dan tindakan lain.
+# Membuat Heroku app, membutuhkan akun gratis di Heroku.com
+heroku create -b
 
-Ada banyak strategi pengujian otomatis yang digunakan oleh pengembang front-end untuk menguji kode mereka. KIta akan membatasi diskusi kita hanya dengan tiga paradigma uji perangkat lunak yang populer dengan React: pengujian unit, pengujian fungsional, dan pengujian integrasi.
+# Mengarahkan root dari directory kita ke folder build
+echo '{ "root": "build/" }' > static.json
 
-### Unit Testing
+# Menghapus folder build dari .gitignore
+sed '/build/d' .gitignore > .gitignore.new && mv .gitignore.new .gitignore
 
-Pengujian unit adalah salah satu tes veteran yang masih populer di kalangan pengujian. Seperti namanya, Anda akan menguji setiap bagian kode untuk memverifikasi bahwa mereka berfungsi secara independen seperti yang diharapkan. Karena arsitektur komponen React, tes unit adalah fit alami. Mereka juga lebih cepat karena Anda tidak harus bergantung pada browser.
+# Build, commit, deploy!
+yarn build
+git add .
+git commit -m "Deploy to Heroku!"
+git push heroku master
 
-Tes unit membantu Anda memikirkan setiap komponen secara terpisah dan memperlakukannya sebagai fungsi. Tes unit Anda untuk komponen tertentu harus menjawab pertanyaan-pertanyaan berikut:
+```
 
-1.  Apakah ada alat peraga? Jika ya, apa hubungannya dengan mereka?
-2.  Komponen apa yang dirender?
-3.  Haruskah itu memiliki sebuah keadaan? Kapan atau bagaimana seharusnya memperbarui keadaan?
-4.  Apakah ada prosedur yang harus diikuti ketika mount dan unmounts, atau pada interaksi pengguna?
+![](https://cdn-images-1.medium.com/max/1600/1*f9BECNOhME8Q9onfXtGreg.png)Gagal deploy
 
-### Pengujian Fungsional
+Jika ada yang mengalami gagal seperti yang diatas, kita perlu masuk ke dalam halaman Dashboard akun Heroku. Masuk kedalam nama apps yang kita buat dan ada di tab Deploy
 
-Tes fungsional yang digunakan untuk menguji perilaku bagian dari aplikasi Anda. Tes fungsional biasanya ditulis dari perspektif pengguna. Suatu fungsi biasanya tidak terbatas pada komponen tunggal. Ini bisa menjadi bentuk penuh atau seluruh halaman.
+![](https://cdn-images-1.medium.com/max/1600/1*lRfLgYdF6y8r6WNMI7PQJA.png)Dashboard Heroku tab Deploy
 
-Misalnya, ketika Anda sedang membangun formulir pendaftaran, mungkin melibatkan komponen untuk elemen formulir, peringatan, dan kesalahan jika ada. Komponen yang diberikan setelah formulir dikirimkan juga merupakan bagian dari fungsi itu. Ini tidak memerlukan perender browser karena kita akan menggunakan DOM virtual di memori untuk pengujian kita.
+![](https://cdn-images-1.medium.com/max/1600/1*_DLlO9XxHnUmDyxtHr-Qew.png)Sukses Deploy ke Heroku!
 
-### Pengujian Integrasi
-
-Pengujian integrasi adalah strategi pengujian di mana semua komponen individu diuji sebagai kelompok. Pengujian terintegrasi mencoba untuk mereplikasi pengalaman pengguna dengan menjalankan tes pada browser yang sebenarnya. Ini jauh lebih lambat daripada pengujian fungsional dan tes unit karena setiap rangkaian pengujian dijalankan pada browser langsung.
+- [React](https://medium.com/tag/react?source=post)
+- [Heroku](https://medium.com/tag/heroku?source=post)
+- [Surge](https://medium.com/tag/surge?source=post)
+- [Deploy](https://medium.com/tag/deploy?source=post)
+- [JavaScript](https://medium.com/tag/javascript?source=post)

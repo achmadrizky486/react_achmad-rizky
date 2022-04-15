@@ -2,58 +2,112 @@
 
 ## Summary
 
-## ==== Testing ====
+## ==== Introduction Algorithm ====
 
-Mungkin banyak diantara developer yang ketika mendengar istilah **TDD** atau **_test-driven development_** akan merasa _overwhelmed,_ tapi sebenarnya TDD tidaklah menakutkan. Artikel ini dibuat untuk teman-teman yang ingin mengenal atau memulai TDD _practice_ pada front-end development, khususnya React.
+## Pengertian Algoritma
 
-![](https://miro.medium.com/max/1400/1*vHHBwcUFUaHWXntSnqKdCA.png)
+Alur pemikiran untuk pemecahan masalah yang terdiri atas sejumlah langkah matematis, misalnya program perhitungan komputer untuk menghitung tingkat bunga kredit, model keuangan seperti alma, transfer pricing dan pengamanan data (algorithm).
 
-Sedikit selingan, di wonderlabs, kami secara intensif menggunakan nodejs dan react untuk membangun aplikasi web dengan berbagai _scope_ dan skala, tapi tidak terbatas pada itu saja. Code quality adalah salah satu yang utama, oleh karena itu, testing juga menjadi sangat penting dalam mengembangkan sebuah aplikasi di wonderlabs.
+### Apa itu Algoritma?
 
-# Manfaat Test
+Algoritma adalah proses atau serangkaian aturan yang harus diikuti dalam perhitungan atau operasi pemecahan masalah lainnya, terutama oleh komputer. Dengan kata lain, semua susunan logis yang diurutkan berdasarkan sistematika tertentu dan digunakan untuk memecahkan suatu masalah.
 
-Sebelum kita mulai, kenapa kita harus membuat test untuk aplikasi yang kita buat? Diantara manfaat membuat test adalah:
+Sebagian besar algoritma dimaksudkan untuk diimplementasikan sebagai program komputer. Perusahaan keuangan menggunakan algoritma di berbagai bidang seperti penetapan harga pinjaman, perdagangan [saham](https://kamus.tokopedia.com/s/saham/), dan manajemen liabilitas aset.
 
-- Ketika aplikasi kita mempunyai _coverage_ yang baik (mayoritas _codebase_ tercover oleh test), Kita akan merasa percaya diri jika harus mengubah suatu bagian pada aplikasi kita. Saat kita mengubah bagian tersebut, dan ada bagian yang lain menjadi _broken_ kita akan segera mengetahuinya.
-- Mengurangi bug pada aplikasi. Walaupun testing tidak menjamin aplikasi kita bebas bug, tetapi kita bisa mencegah beberapa hal yang berpotensi menjadi bug.
-- Kita menjadi terbiasa mendesain sebelum mengerjakan. Beberapa studi telah dilakukan dan hasilnya TDD sangat efektif meningkatkan produktifitas, karena ada objektif yang harus kita capai, yaitu menjadikan semua test case passed.
-- Dan lain-lain.
-  Kode pengujian adalah praktik yang membingungkan bagi banyak pengembang. Itu bisa dimengerti karena menulis tes membutuhkan lebih banyak usaha, waktu, dan kemampuan untuk meramalkan kemungkinan kasus penggunaan. Startup dan pengembang yang bekerja pada proyek yang lebih kecil biasanya lebih suka mengabaikan tes sama sekali karena kurangnya sumber daya dan tenaga kerja.
+Perdagangan menggunakan algoritma juga dikenal sebagai perdagangan otomatis, karena menggunakan program komputer untuk membeli dan menjual sekuritas dengan kecepatan yang tidak mungkin dilakukan oleh manusia. Hal itu terjadi karena harga saham, [obligasi](https://kamus.tokopedia.com/o/obligasi/), dan komoditas muncul dalam berbagai format online dan dalam data perdagangan, maka dari itu proses algoritma digunakan untuk mencerna data menjadi semakin mudah.
 
-Namun, ada beberapa alasan mengapa saya yakin Anda harus menguji komponen Anda:
+### Jenis-jenis Algoritma
 
-1.  Ini membuat Anda merasa lebih percaya diri tentang kode Anda.
-2.  Tes meningkatkan produktivitas Anda.
+1. Algoritma Sekuensial
 
-React juga tidak berbeda. Ketika seluruh aplikasi Anda mulai berubah menjadi tumpukan komponen yang sulit dipelihara, pengujian menawarkan stabilitas dan konsistensi. Menulis tes dari hari pertama akan membantu Anda menulis kode yang lebih baik, mendeteksi bug dengan mudah, dan mempertahankan alur kerja pengembangan yang lebih baik.
+   Algoritma sekuensial merupakan algoritma yang langkah-langkahnya secara urut dari awal hingga akhir. Langkah demi langkah yang dijalankan harus urut dari atas sampai bawah.
 
-Dalam artikel ini, saya akan membawa Anda melalui segala sesuatu yang perlu Anda ketahui untuk menulis tes untuk komponen React Anda. Saya juga akan membahas beberapa teknik dan praktek-praktek terbaik saat kita melakukannya. Mari kita mulai!
+2. Algoritma Perulangan
 
-## Testing Components dalam React
+   Algoritma perulangan merupakan suatu algoritma yang menjalankan beberapa langkah tertentu secara berulang-ulang atau looping. Pada masalah yang dihadapi, ada pula sebuah langkah yang harus dilakukan secara berulang-ulang.
 
-Pengujian adalah proses memverifikasi bahwa _test assertions_ kita benar dan bahwa mereka tetap benar sepanjang masa aplikasi. Test assertion ini adalah ekspresi boolean yang mengembalikan nilai true kecuali ada bug di kode Anda.
+3. Algoritma Percabangan atau Bersyarat
 
-Misalnya, asersi bisa menjadi sesuatu yang sederhana seperti ini: "Ketika pengguna menavigasi ke / **login**, modal dengan id `#login` harus dirender." Jadi, jika ternyata Anda mengacaukan komponen masuk entah bagaimana, asersi akan kembali salah. Asersi tidak hanya terbatas pada apa yang diberikan — Anda juga dapat membuat asersi tentang bagaimana aplikasi merespons interaksi pengguna dan tindakan lain.
+   Algoritma bersyarat merupakan algoritma yang menjalankan langkah berikutnya apabila terdapat syarat yang sudah dapat dipenuhi.
 
-Ada banyak strategi pengujian otomatis yang digunakan oleh pengembang front-end untuk menguji kode mereka. KIta akan membatasi diskusi kita hanya dengan tiga paradigma uji perangkat lunak yang populer dengan React: pengujian unit, pengujian fungsional, dan pengujian integrasi.
+## **Pengertian PseudoCode**
 
-### Unit Testing
+Pseudo artinya imitasi dan code yang berarti kode yang dihubungkan dengan perintah yang ditulis dalam bahasa pemrograman atau kode bahasa komputer. Jika diartikan secara bebas, maka pseudocode artinya imitasi atau tiruan dari [kode bahasa pemrograman](https://www.nesabamedia.com/pengertian-bahasa-pemrograman/).
 
-Pengujian unit adalah salah satu tes veteran yang masih populer di kalangan pengujian. Seperti namanya, Anda akan menguji setiap bagian kode untuk memverifikasi bahwa mereka berfungsi secara independen seperti yang diharapkan. Karena arsitektur komponen React, tes unit adalah fit alami. Mereka juga lebih cepat karena Anda tidak harus bergantung pada browser.
+Pada dasarnya, pseudocode adalah suatu bahasa yang memungkinkan para programmer untuk berfikir terhadap suatu permasalahan yang harus segera dipecahkan tanpa harus memikirkan code atau syntax dari bahasa pemrograman tertentu. Di dalam pseudocode tidak memiliki aturan dalam penulisan syntax-nya. Jadi pseudocode digunakan untuk menggambarkan logika secara berurutan dari program tanpa berpikir terlebih dahulu bagaimana bahasa pemrogramannya.
 
-Tes unit membantu Anda memikirkan setiap komponen secara terpisah dan memperlakukannya sebagai fungsi. Tes unit Anda untuk komponen tertentu harus menjawab pertanyaan-pertanyaan berikut:
+Pseudocode diartikan ke dalam bahasa Indonesia disebut kode palsu. Maksudnya adalah deskripsi dari algoritma pemrograman komputer yang menggunakan konvensi struktural dari suatu bahasa pemrograman, dan memiliki tujuan agar mudah dibaca oleh manusia bukan oleh mesin. Pseudocode biasanya tidak menggunakan elemen – elemen detail yang tidak perlu untuk kebutuhan pemahaman manusia dari sebuah algoritma, seperti deklarasi variabel, kode ataupun sub rutin untuk sistem yang memiliki sifat spesifik.
 
-1.  Apakah ada alat peraga? Jika ya, apa hubungannya dengan mereka?
-2.  Komponen apa yang dirender?
-3.  Haruskah itu memiliki sebuah keadaan? Kapan atau bagaimana seharusnya memperbarui keadaan?
-4.  Apakah ada prosedur yang harus diikuti ketika mount dan unmounts, atau pada interaksi pengguna?
+Dengan begitu, pseudocode hanya kode yang menyerupai kode program saja, dan tidak dapat dipahami atau dimengerti langsung oleh mesin komputer. Pseudocode dapat diolah oleh mesin komputer jika sudah mengikuti aturan penulisan di dalam sebuah bahasa pemrograman. Misalnya menggunakan bahasa C, C++, Pascal, C#, Java, Golang dan lain sebagainya.
 
-### Pengujian Fungsional
+## **Fungsi PseudoCode**
 
-Tes fungsional yang digunakan untuk menguji perilaku bagian dari aplikasi Anda. Tes fungsional biasanya ditulis dari perspektif pengguna. Suatu fungsi biasanya tidak terbatas pada komponen tunggal. Ini bisa menjadi bentuk penuh atau seluruh halaman.
+Pseudocode mempunyai fungsi yang berguna untuk mempermudah penulisan dan pemetaan dari sebuah algoritma. Karena pada dasarnya, seorang programmer sebelum membuat dan menjalankan sebuah program atau aplikasi, ia terlebih dahulu harus mempunya susunan atau mempunyai pemecahan terhadap masalah yang akan ia buat biasanya disebut [dengan algoritma](https://www.nesabamedia.com/pengertian-algoritma-pemrograman/).
 
-Misalnya, ketika Anda sedang membangun formulir pendaftaran, mungkin melibatkan komponen untuk elemen formulir, peringatan, dan kesalahan jika ada. Komponen yang diberikan setelah formulir dikirimkan juga merupakan bagian dari fungsi itu. Ini tidak memerlukan perender browser karena kita akan menggunakan DOM virtual di memori untuk pengujian kita.
+Ya, sebelum membuat program, seorang programmer harus tahu algoritma seperti apa yang akan ia gunakan untuk memecahkan masalanya. Dengan menggunakan penulisan pseudocode juga akan dapat diketahui serumit apa program yang nantinya akan dibuat. Selain itu pseudocode juga mempunyai fungsi – fungsinya yang lain. Berikut ini beberapa fungsi dari pseudocode:
 
-### Pengujian Integrasi
+1.  Pseudocode memiliki fungsi sebagai alat dokumentasi
+2.  Pseudocode dapat mempemudah penggunanya dalam memahami serta memperjelas cara menyelesaikan masalanya.
+3.  Pseudocode dapat membantu penggunanya dalam menuliskan sebuah algoritma yang akan dibuatnya.
+4.  Pseudocode memiliki aspek yang sangat ringkas dan mudah karena pseudocode tidak bergantung pada suatu sistem tertentu dan itulah yang menjadikannya prinsip utama dari sebuah algoritma.
 
-Pengujian integrasi adalah strategi pengujian di mana semua komponen individu diuji sebagai kelompok. Pengujian terintegrasi mencoba untuk mereplikasi pengalaman pengguna dengan menjalankan tes pada browser yang sebenarnya. Ini jauh lebih lambat daripada pengujian fungsional dan tes unit karena setiap rangkaian pengujian dijalankan pada browser langsung.
+Tujuan dari pseudocode itu sendiri adalah agar manusia khususnya para programmer bisa dengan mudah memahami dibandingkan dengan menggunakan bahasa pemrograman yang umumnya digunakan, terlebih lagi aspek pseudocode relatif ringkas dan tidak memiliki ketergantungan dengan suatu sistem tertentu yang merupakan prinsip utama dalam sebuah algoritma.
+
+Pada umumnya, pseudocode digunakan di dalam publikasi karya ilmiah atau buku – buku yang mendokumentasikan dari sebuah algortima. Pseudocode juga digunakan dalam perencanaan pengembangan program komputer untuk membuat sketsa atas struktur sebuah program sebelum program yang sebenarnya dibuat atau ditulis.
+
+Pseudocode tidak memiliki satu standar apapun, sebuah program yang masih berupa pseudocode tidak akan bisa dijalankan. Pseudocode bisa dibilang mirip dengan skeleton programs atau kerangka program termasuk dummycode yang bisa dikompilasi tanpa kesalahan. Diagram alur juga bisa dimasukkan sebagai alternatif berbasis grafis sebuah pseudocode.
+
+## **Struktur PseudoCode**
+
+Secara umum struktur penulisan pseudocode dibagi menjadi 3 bagian. Berikut ini struktur pseudocode:
+
+### **1. Bagian judul**
+
+Bagian judul ini berisi judul algoritma. Biasanya bagian ini diawali dengan kata “program”. Lalu, diikuti dengan nama algoritma. Pada umumnya, nama algoritma hanya terdiri dari satu kata, jika nama yang terkandung lebih dari satu kata penulisan disatukan. Artinya jika terdiri lebih dari dua kata, maka sapasi ditiadakan.
+
+Berikut ini aturan penulisan nama judul:
+
+- Judul tidak boleh terdapat spasi. Spasi bisa diganti dengan karakter “\_” (underscore).
+- Judul tidak boleh diawali dengan angka.
+- Judul tidak boleh menggunakan istilah – istilah yang biasa digunakan sebagai keyword di bahasa pemrograman.
+- Judul boleh menggunakan huruf besar, huruf kecil, dan kombinasinya selama tidak melanggar aturan diatas.
+
+### **2. Bagian deskripsi**
+
+Seperti namanya, bagian deskripsi ini digunakan untuk mendefinisikan atau mendeklarasikan jenis – jenis variabel yang akan digunakan dalam proses algoritma. Di dalam pemograman komputer sendiri terdapat beberapa variabel, seperti bilangan bulat, desimal, pecahan, dan lain sebagainya.
+
+### **3. Bagian implementasi**
+
+Bagian implementasi ini bisa dikatakan sebagai bagian inti atau utama, yang mana merupakan bagian jalannya sebuah algoritma. Pada bagian ini terdapat sekumpulan perintah algoritma, perintahnya pun bisa berupa runtutan, kondisional ataupun perulangan.
+
+## Pengertian flowchart
+
+Flowchart atau bagan alur adalah diagram yang menampilkan langkah-langkah dan keputusan untuk melakukan sebuah proses dari suatu program. Setiap langkah digambarkan dalam bentuk diagram dan dihubungkan dengan garis atau arah panah.
+
+Flowchart berperan penting dalam memutuskan sebuah langkah atau fungsionalitas dari sebuah proyek pembuatan program yang melibatkan banyak orang sekaligus. Selain itu dengan menggunakan bagan alur proses dari sebuah program akan lebih jelas, ringkas, dan mengurangi kemungkinan untuk salah penafsiran. Penggunaan flowchart dalam dunia pemrograman juga merupakan cara yang bagus untuk menghubungkan antara kebutuhan teknis dan non-teknis.
+
+### Fungsi flowchart
+
+Fungsi utama dari flowchart adalah memberi gambaran jalannya sebuah program dari satu proses ke proses lainnya. Sehingga, alur program menjadi mudah dipahami oleh semua orang. Selain itu, fungsi lain dari flowchart adalah untuk menyederhanakan rangkaian prosedur agar memudahkan pemahaman terhadap informasi tersebut.
+
+### Jenis flowchart
+
+Flowchart sendiri terdiri dari lima jenis, masing-masing jenis memiliki karakteristik dalam penggunaanya. Berikut adalah jenis-jenisnya:
+
+1.  **Flowchart dokumen**  
+    Pertama ada flowchart dokumen (_document flowchart_) atau bisa juga disebut dengan _paperwork flowchart_. Flowchart dokumen berfungsi untuk menelusuri alur form dari satu bagian ke bagian yang lain, termasuk bagaimana laporan diproses, dicatat, dan disimpan.
+2.  **Flowchart program**  
+    Selanjutnya kita akan membahas flowchart program. Flowchart ini menggambarkan secara rinci prosedur dari proses program. Flowchart program terdiri dari dua macam, antara lain: flowchart logika program (_program logic flowchart_) dan flowchart program komputer terinci (_detailed computer program flowchart_).
+3.  **Flowchart proses**  
+    Flowchart proses adalah cara penggambaran rekayasa industrial dengan cara merinci dan menganalisis langkah-langkah selanjutnya dalam suatu prosedur atau sistem.
+4.  **Flowchart sistem**  
+    Yang keempat ada flowchart sistem. Flowchart sistem adalah flowchart yang menampilkan tahapan atau proses kerja yang sedang berlangsung di dalam sistem secara menyeluruh. Selain itu flowchart sistem juga menguraikan urutan dari setiap prosedur yang ada di dalam sistem.
+5.  **Flowchart skematik**  
+    Terakhir ada flowchart skematik. Flowchart ini menampilkan alur prosedur suatu sistem, hampir sama dengan flowchart sistem. Namun, ada perbedaan dalam penggunaan simbol-simbol dalam menggambarkan alur. Selain simbol-simbol, flowchart skematik juga menggunakan gambar-gambar komputer serta peralatan lainnya untuk mempermudah dalam pembacaan flowchart untuk orang awam.
+
+### Simbol flowchart
+
+Pada dasarnya simbol-simbol dalam flowchart memiliki arti yang berbeda-beda. Berikut adalah simbol-simbol yang sering digunakan dalam proses pembuatan flowchart.  
+![Flowchart Adalah: Fungsi, Jenis, Simbol, dan Contohnya](https://www.dicoding.com/blog/wp-content/uploads/2021/07/Simbol-flowchart-1024x685.jpg)
+
+Simbol-simbol di atas memiliki jenis dan fungsi yang berbeda-beda. Ada yang berfungsi untuk menghubungkan satu simbol dengan simbol lainnya seperti simbol flow, on-page dan off-page reference. Selain itu ada juga simbol yang berfungsi untuk menunjukan suatu proses yang sedang berjalan, dan yang terakhir terdapat simbol yang berfungsi untuk memasukan input dan menampilkan output.

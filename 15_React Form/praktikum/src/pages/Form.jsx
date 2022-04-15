@@ -6,6 +6,7 @@ import NoHandphone from "./components/NoHandphone";
 import Kelas from "./components/Kelas";
 import Foto from "./components/Foto";
 import Harapan from "./components/Harapan";
+import Button from "./components/Button";
 
 const Form = () => {
   return (
@@ -17,6 +18,7 @@ const Form = () => {
       <Kelas />
       <Foto />
       <Harapan />
+      <Button />
     </form>
   );
 };

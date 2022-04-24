@@ -2,102 +2,102 @@
 
 ## Summary
 
-## ==== React Fundamental====
+## ==== GraphQL - Mutation ====
 
-# Rendering Hello World (HTML, Javascript, React)
+Kueri mutasi mengubah data di penyimpanan data dan mengembalikan nilai. Ini dapat digunakan untuk menyisipkan, memperbarui, atau menghapus data. Mutasi didefinisikan sebagai bagian dari skema.
 
-Membuat `Hello World` pada file HTML sangat mudah, kita hanya perlu menggunakan tag HTML yang sesuai. Namun kali ini kita akan membuat Hello World dengan menggunakan 3 cara, yakni cara HTML, javascript biasa, dan cara React.
+Sintaks kueri mutasi diberikan di bawah ini
 
-> [HTML Online IDE](https://www.kodekami.com/reactjs/tools/online-code-compiler/#html-tryit-editor-w3schools) memudahkan kita untuk mencoba jalankan kode HTML
+    mutation{
+       someEditOperation(dataField:"valueOfField"):returnType
+    }
 
-### Hello World di HTML
+## Ilustrasi
 
-Hello world dapat dibuat dengan tags HTML tanpa menggunakan javascript sama sekali.
+Mari kita pahami cara menambahkan catatan siswa baru ke dalam penyimpanan data menggunakan kueri mutasi.
 
-### Hello World di Javascript
+### Langkah 1 – Unduh dan Instal Dependensi yang Diperlukan untuk Proyek
 
-Kita bisa membuat Hello World dengan menggunakan javascript dengan mengandalkan DOM (Document Object Model). DOM ini dibuat oleh browser yang berisi hirarki struktur HTML dalam bentuk Object. Kita bisa mengakses elemen HTML pada Javascript dengan menggunakan DOM.
+Buat folder proyek dengan nama mutasi-app. Ubah direktori Anda menjadi aplikasi mutasi dari terminal. Ikuti langkah 3 hingga 5 yang dijelaskan di bab Pengaturan Lingkungan.
 
-### Hello World pada React
+### Langkah 2 – Buat File schema.graphql
 
-Membuat Hello World pada React mirip dengan membuat Hello World pada Javascript, perbedaannya adalah kita perlu menggunakan dependencies berupa React, React-DOM, dan Babel dari npm. Babel digunakan untuk mengubah kode javascript yang digunakan oleh React agar bisa dijalankan di browser.
+Tambahkan file **schema.graphql** di folder proyek mutasi-aplikasi dan tambahkan kode berikut
 
-# Pengenalan React Web API
+    type Query  { greeting:String  } type Mutation  { createStudent(collegeId:ID,firstName:String,lastName:String):String
+    }
 
-`React` adalah titik awal dari library React. Jika Anda memuat React dari tag `<script>` seperti pada contoh Hello World sebelumnya, React API tingkat atas ini tersedia secara global, sehingga bisa digunakan di script manapun. Namun Jika Anda menggunakan ES6 dengan npm (Nodejs), Anda perlu menulis `import React from 'react'`.
+Perhatikan bahwa fungsi createStudent mengembalikan tipe String. Ini adalah pengenal unik (ID) yang dihasilkan setelah membuat siswa.
 
-Pada tutorial ini, kita akan mengkonversi kode HTML yang menggunakan [HTML DOM API](https://www.kodekami.com/redirect?url=https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) menjadi kode HTML yang menggunakan React API.
+### Langkah 3 – Buat File resolver.js
 
-Terdapat beberapa React API yang bisa Anda temukan di [React Documentation](https://www.kodekami.com/redirect?url=https://reactjs.org/docs/react-api.html).
+Buat file resolvers.js di folder proyek dan tambahkan kode berikut
 
-`React.createElement` adalah React API yang digunakan untuk membuat elemen baru, React API ini merupakan salah satu API yang paling banyak digunakan. Sintaksnya kurang lebih seperti ini `React.createElement(typeElement, props, children)`
+    const db =  require('./db')  const  Mutation  =  { createStudent:(root,args,context,info)  =>  {  return db.students.create({collegeId:args.collegeId, firstName:args.firstName, lastName:args.lastName})  }  }  const  Query  =  { greeting:()  =>  "hello"  }  module.exports =  {Query,Mutation}
 
-# Pengenalan React JSX
+Fungsi mutasi menunjuk ke koleksi siswa di datastore. Untuk menambahkan _siswa_ baru , aktifkan metode create di koleksi siswa. Objek _args_ akan berisi parameter yang diteruskan dalam kueri. Metode create koleksi _siswa akan mengembalikan id dari objek siswa yang baru dibuat._
 
-JSX (JavaScript Syntax Extension) adalah sintaks seperti XML/HTML yang digunakan oleh React dalam bahasa ES6 (ECMAScript 2015) agar HTML dapat ditulis di dalam kode JavaScript/React. Sintaksnya digunakan untuk mengubah teks HTML yang ditemukan dalam file JSX menjadi objek JavaScript standar, pengubahan ini menggunakan compiler ES6 ke Javascript seperti **Babel**.
+### Langkah 4 Jalankan Aplikasi
 
-Pada dasarnya, Anda dapat menulis struktur seperti HTML/XML yang ringkas (misalnya, Document Object Model) dengan menggunakan JSX dalam file yang sama saat Anda menulis kode JavaScript, kemudian Babel akan mengubah JSX menjadi kode JavaScript murni.
+Buat file **server.js** . Lihat langkah 8 di Bab Pengaturan Lingkungan. Jalankan perintah npm start di terminal. Server akan aktif dan berjalan pada port 9000. Di sini, kami menggunakan GraphiQL sebagai klien untuk menguji aplikasi.
 
-# Pengenalan Komponen React
+Langkah selanjutnya buka browser dan ketik URL **http://localhost:9000/graphiql** . Ketik kueri berikut di editor
 
-Komponen React adalah bagian-bagian UI dari aplikasi React. Dimulai dari bagian UI terbesar (seluruh tampilan aplikasi) sampai ke bagian UI terkecil seperti input, button dll. Komponen React dapat ditulis berupa class dan bisa berupa function. Pada tutorial ini kami berfokus pada pembuatan komponen React dengan fungsi (function component React).
+    //college Id should be matched with data from colleges.json for easy retrieval mutation { createStudent(collegeId:"col-2",firstName:"Tim",lastName:"George")  }
 
-Kita bisa mengibaratkan komponen React sebagai mainan [Lego](https://www.kodekami.com/redirect?url=https://www.google.com/search?q=lego). Sebuah mainan Lego yang utuh terdiri dari beberapa komponen, dan komponen-komponen tersebut bisa terdiri dari beberapa komponen juga, sampai ke komponen paling sederhana.
+Query di atas akan membuat objek mahasiswa dalam file student.json. Kueri akan mengembalikan pengidentifikasi unik. Respon dari query tersebut adalah seperti yang ditunjukkan di bawah ini
 
-Berikut ini contoh pohon komponen (component tree), sebuah komponen besar bisa terdiri dari komponen yang lebih kecil dan seterusnya.
+    {  "data":  {  "createStudent":  "SkQtxYBUm"  }  }
 
-![Contoh component tree](https://cdn.statically.io/img/raw.githubusercontent.com/f=auto/elfaro1453/blog-assets/98fe2b66cf2a3485ad62777d381a7c3ced1a58be/docs-javascript/react-components.png)
+Untuk memverifikasi apakah objek siswa telah dibuat, kita dapat menggunakan kueri studentById. Anda juga dapat membuka file student.json dari folder data untuk memverifikasi id.
 
-**Component Tree**: Komponen bisa terdiri dari komponen lain
+Untuk menggunakan kueri studentById, edit **schema.graphql** seperti yang diberikan di bawah ini
 
-Tujuan dari pembuatan komponen React adalah _reusable code_ (kode yang bisa digunakan kembali) yang tidak hanya berisi JSX namun juga bisa berisi logika. Kode di dalam komponen React bersifat independen dan terisolasi. Sehingga Data yang ada di dalamnya tidak akan dipengaruhi maupun mempengaruhi komponen lain, kecuali jika terjadi transaksi data antar komponen.
+    type Query  { studentById(id:ID!):Student  } type Student  { id:ID! firstName:String lastName:String collegeId:String  }
 
-# Membuat Function Component React
+Edit file **resolver.js** seperti yang diberikan di bawah ini
 
-Komponen React berupa fungsi (function component) adalah jenis komponen yang direkomendasikan di React. Sesuai dengan namanya, komponen ini dibuat berupa fungsi JavaScript/ES6 yang me-return elemen React (JSX).
+    const db =  require('./db')  const  Query  =  { studentById:(root,args,context,info)  =>  {  return db.students.get(args.id);  }  }  const  Mutation  =  { createStudent:(root,args,context,info)  =>  {  return db.students.create({collegeId:args.collegeId, firstName:args.firstName, lastName:args.lastName})  }  }  module.exports =  {Query,Mutation}
 
-### Membuat Komponen React
+Diberikan di bawah ini adalah kueri untuk mendapatkan siswa dengan id unik yang dikembalikan dari kueri mutasi
 
-Komponen React dapat dibuat dengan ketentuan umum sebagai berikut ini:
+    { studentById(id:"SkQtxYBUm")  { id
+        firstName
+        lastName }  }
 
-1.  Import library `React`
-2.  Nama Fungsi diawali dengan huruf kapital
-3.  Return value dari fungsi berupa JSX dengan satu child
+Tanggapan dari server adalah sebagai berikut
 
-Mari kita bahas masing-masing ketentuan di atas.
+    {  "data":  {  "studentById":  {  "id":  "SkQtxYBUm",  "firstName":  "Tim",  "lastName":"George"  }  }  }
 
-### Library React Harus Berada di Dalam Scope
+## Mengembalikan Objek dalam Mutasi
 
-Dikarenakan JSX akan di-transform ke dalam bentuk javascript oleh compiler (babel). maka kita perlu mengikut sertakan library `React` di setiap scope atau cakupan kode yang menggunakan JSX. Sebagai contoh berikut ini komponen react yang valid :
+Ini adalah praktik terbaik untuk mengembalikan objek dalam mutasi. Misalnya, aplikasi klien ingin mengambil detail siswa dan perguruan tinggi. Dalam hal ini, daripada membuat dua permintaan yang berbeda, kita dapat membuat kueri yang mengembalikan objek yang berisi siswa dan detail perguruan tinggi mereka.
 
-```jsx
-import React from "react";
+### Langkah 1 Edit File Skema
 
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Selamat Datang di Reactjs</h1>
-      <p>Kita belajar membuat komponen</p>
-    </div>
-  );
-}
-```
+Tambahkan metode baru bernama **addStudent** yang mengembalikan objek dalam tipe mutasi **schema.graphql** .
 
-### Nama Fungsi Diawali dengan Huruf Kapital
+Mari kita pelajari cara mengakses detail perguruan tinggi melalui detail siswa. Tambahkan jenis perguruan tinggi di file skema.
 
-Sebuah fungsi dengan nama yang diawali dengan huruf kapital dan me-return JSX disebut React function component, selanjutnya kita bisa menggunakan custom tag html dengan nama fungsi tersebut. Sedangkan nama fungsi biasa diawali dengan huruf kecil.
+    type Mutation  { addStudent_returns_object(collegeId:ID,firstName:String,lastName:String):Student createStudent(collegeId:ID,firstName:String,lastName:String):String  } type College  { id:ID! name:String location:String rating:Float  } type Student  { id:ID! firstName:String lastName:String college:College  }
 
-### Return Value Hanya Terdiri dari Satu Child
+### Langkah 2 - Perbarui File resolvers.js
 
-Sebuah fungsi tidak dianggap sebagai komponen React jika tidak menggunakan JSX atau method `React.createElement()`. Selain itu hanya boleh ada sebuah scope untuk JSX pada return-valuenya.
+Perbarui file **resolvers.js** di folder proyek dan tambahkan kode berikut
 
-# State
+    const  Mutation  =  { createStudent:(root,args,context,info)  =>  {  return db.students.create({ collegeId:args.collegeId, firstName:args.firstName, lastName:args.lastName })  },  // new resolver function addStudent_returns_object:(root,args,context,info)  =>  {  const id = db.students.create({ collegeId:args.collegeId, firstName:args.firstName, lastName:args.lastName })  return db.students.get(id)  }  }  //for each single student object returned,resolver is invoked  const  Student  =  { college:(root)  =>  {  return db.colleges.get(root.collegeId);  }  }  module.exports =  {Query,Student,Mutation}
 
-State adalah salah satu konsep penting dalam ekosistem React. State bisa dikatakan sebagai data privat dari sebuah komponen, bersifat encapsulated yang berarti state dari sebuah komponen tidak bisa dipengaruhi dan mempengaruhi state komponen lain secara langsung. Selain itu, nilai pada state akan tereset ke nilai awal ketika halaman direload atau ketika komponen dirender kembali.
+### Langkah 3 - Mulai Server dan Ketik Permintaan Permintaan di GraphiQL
 
-# Penanganan Event pada React
+Selanjutnya, kita akan memulai server dan meminta kueri di GraphiQL dengan kode berikut
 
-Handling atau penanganan event pada elemen React mirip dengan [event yang ada pada Javascript](https://www.kodekami.com/reactjs/javascript-for-learn-react/events-pada-javascript/), namun dengan beberapa perbedaan yaitu:
+    mutation { addStudent_returns_object(collegeId:"col-101",firstName:"Susan",lastName:"George")  { id
+          firstName
+          college{ id
+             name }  }  }
 
-- Penamaan event pada React menggunakan **camelCase**, tidak lagi _lowercase_
-- Event handler diisi dengan nama fungsi saja, tidak perlu pemanggilan fungsi.
+Query di atas menambahkan siswa baru dan mengambil objek siswa bersama dengan objek perguruan tinggi. Ini menghemat perjalanan pulang pergi ke server.
+
+Jawabannya seperti yang diberikan di bawah ini
+
+    {  "data":  {  "addStudent_returns_object":  {  "id":  "rklUl08IX",  "firstName":  "Susan",  "college":  {  "id":  "col-101",  "name":  "AMU"  }  }  }  }

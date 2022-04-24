@@ -2,102 +2,55 @@
 
 ## Summary
 
-## ==== React Fundamental====
+## ==== GraphQL - Subscription ====
 
-# Rendering Hello World (HTML, Javascript, React)
+# Subscriptions
 
-Membuat `Hello World` pada file HTML sangat mudah, kita hanya perlu menggunakan tag HTML yang sesuai. Namun kali ini kita akan membuat Hello World dengan menggunakan 3 cara, yakni cara HTML, javascript biasa, dan cara React.
+## Get real-time updates from your GraphQL server
 
-> [HTML Online IDE](https://www.kodekami.com/reactjs/tools/online-code-compiler/#html-tryit-editor-w3schools) memudahkan kita untuk mencoba jalankan kode HTML
+---
 
-### Hello World di HTML
+In addition to [queries](https://www.apollographql.com/docs/react/data/queries) and [mutations](https://www.apollographql.com/docs/react/data/mutations), GraphQL supports a third operation type: **subscriptions**.
 
-Hello world dapat dibuat dengan tags HTML tanpa menggunakan javascript sama sekali.
+Like queries, subscriptions enable you to fetch data. _Unlike_ queries, subscriptions are long-lasting operations that can change their result over time. They can maintain an active connection to your GraphQL server (most commonly via WebSocket), enabling the server to push updates to the subscription's result.
 
-### Hello World di Javascript
+Subscriptions are useful for notifying your client in real time about changes to back-end data, such as the creation of a new object or updates to an important field.
 
-Kita bisa membuat Hello World dengan menggunakan javascript dengan mengandalkan DOM (Document Object Model). DOM ini dibuat oleh browser yang berisi hirarki struktur HTML dalam bentuk Object. Kita bisa mengakses elemen HTML pada Javascript dengan menggunakan DOM.
+## [When to use subscriptions](https://www.apollographql.com/docs/react/data/subscriptions/#when-to-use-subscriptions)
 
-### Hello World pada React
+In the majority of cases, your client should _not_ use subscriptions to stay up to date with your backend. Instead, you should [poll intermittently](https://www.apollographql.com/docs/react/data/queries/#polling) with queries, or [re-execute queries on demand](https://www.apollographql.com/docs/react/data/queries/#refetching) when a user performs a relevant action (such as clicking a button).
 
-Membuat Hello World pada React mirip dengan membuat Hello World pada Javascript, perbedaannya adalah kita perlu menggunakan dependencies berupa React, React-DOM, dan Babel dari npm. Babel digunakan untuk mengubah kode javascript yang digunakan oleh React agar bisa dijalankan di browser.
+You _should_ use subscriptions for the following:
 
-# Pengenalan React Web API
+- **Small, incremental changes to large objects**. Repeatedly polling for a large object is expensive, especially when most of the object's fields rarely change. Instead, you can fetch the object's initial state with a query, and your server can proactively push updates to individual fields as they occur.
+- **Low-latency, real-time updates**. For example, a chat application's client wants to receive new messages as soon as they're available.
 
-`React` adalah titik awal dari library React. Jika Anda memuat React dari tag `<script>` seperti pada contoh Hello World sebelumnya, React API tingkat atas ini tersedia secara global, sehingga bisa digunakan di script manapun. Namun Jika Anda menggunakan ES6 dengan npm (Nodejs), Anda perlu menulis `import React from 'react'`.
+## [Choosing a subscription library](https://www.apollographql.com/docs/react/data/subscriptions/#choosing-a-subscription-library)
 
-Pada tutorial ini, kita akan mengkonversi kode HTML yang menggunakan [HTML DOM API](https://www.kodekami.com/redirect?url=https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) menjadi kode HTML yang menggunakan React API.
+The GraphQL spec does not define a specific protocol for sending subscription requests. The first popular JavaScript library to implement subscriptions over WebSocket is called `subscriptions-transport-ws`. **This library is no longer actively maintained.** Its successor is a library called `graphql-ws`. The two libraries _do not use the same WebSocket subprotocol_, so you need to make sure that your server and clients all use the same library.
 
-Terdapat beberapa React API yang bisa Anda temukan di [React Documentation](https://www.kodekami.com/redirect?url=https://reactjs.org/docs/react-api.html).
+Apollo Client supports both `graphql-ws` and `subscriptions-transport-ws`. We recommend you use the newer library `graphql-ws`, and this page shows how to use it. If you need to use `subscriptions-transport-ws` because your server still uses that protocol, the differences are described [at the bottom of this page](https://www.apollographql.com/docs/react/data/subscriptions/#the-older-subscriptions-transport-ws-library).
 
-`React.createElement` adalah React API yang digunakan untuk membuat elemen baru, React API ini merupakan salah satu API yang paling banyak digunakan. Sintaksnya kurang lebih seperti ini `React.createElement(typeElement, props, children)`
+**Note**: Confusingly, the `subscriptions-transport-ws` library calls its _WebSocket subprotocol_ `graphql-ws`, and the `graphql-ws` _library_ calls its subprotocol `graphql-transport-ws`! In this article, we refer to the two _libraries_ (`subscriptions-transport-ws` and `graphql-ws`), _not_ the two subprotocols.
 
-# Pengenalan React JSX
+## [Defining a subscription](https://www.apollographql.com/docs/react/data/subscriptions/#defining-a-subscription)
 
-JSX (JavaScript Syntax Extension) adalah sintaks seperti XML/HTML yang digunakan oleh React dalam bahasa ES6 (ECMAScript 2015) agar HTML dapat ditulis di dalam kode JavaScript/React. Sintaksnya digunakan untuk mengubah teks HTML yang ditemukan dalam file JSX menjadi objek JavaScript standar, pengubahan ini menggunakan compiler ES6 ke Javascript seperti **Babel**.
+You define a subscription on both the server side and the client side, just like you do for queries and mutations.
 
-Pada dasarnya, Anda dapat menulis struktur seperti HTML/XML yang ringkas (misalnya, Document Object Model) dengan menggunakan JSX dalam file yang sama saat Anda menulis kode JavaScript, kemudian Babel akan mengubah JSX menjadi kode JavaScript murni.
+### [Server side](https://www.apollographql.com/docs/react/data/subscriptions/#server-side)
 
-# Pengenalan Komponen React
+You define available subscriptions in your GraphQL schema as fields of the `Subscription` type. The following `commentAdded` subscription notifies a subscribing client whenever a new comment is added to a particular blog post (specified by `postID`):
 
-Komponen React adalah bagian-bagian UI dari aplikasi React. Dimulai dari bagian UI terbesar (seluruh tampilan aplikasi) sampai ke bagian UI terkecil seperti input, button dll. Komponen React dapat ditulis berupa class dan bisa berupa function. Pada tutorial ini kami berfokus pada pembuatan komponen React dengan fungsi (function component React).
+    type Subscription { commentAdded(postID: ID!): Comment }
 
-Kita bisa mengibaratkan komponen React sebagai mainan [Lego](https://www.kodekami.com/redirect?url=https://www.google.com/search?q=lego). Sebuah mainan Lego yang utuh terdiri dari beberapa komponen, dan komponen-komponen tersebut bisa terdiri dari beberapa komponen juga, sampai ke komponen paling sederhana.
+### [Client side](https://www.apollographql.com/docs/react/data/subscriptions/#client-side)
 
-Berikut ini contoh pohon komponen (component tree), sebuah komponen besar bisa terdiri dari komponen yang lebih kecil dan seterusnya.
+In your application's client, you define the shape of each subscription you want Apollo Client to execute, like so:
 
-![Contoh component tree](https://cdn.statically.io/img/raw.githubusercontent.com/f=auto/elfaro1453/blog-assets/98fe2b66cf2a3485ad62777d381a7c3ced1a58be/docs-javascript/react-components.png)
+    const COMMENTS_SUBSCRIPTION = gql` subscription OnCommentAdded($postID: ID!) { commentAdded(postID: $postID) { id content } } `;
 
-**Component Tree**: Komponen bisa terdiri dari komponen lain
+When Apollo Client executes the `OnCommentAdded` subscription, it establishes a connection to your GraphQL server and listens for response data. Unlike with a query, there is no expectation that the server will immediately process and return a response. Instead, your server only pushes data to your client when a particular event occurs on your backend.
 
-Tujuan dari pembuatan komponen React adalah _reusable code_ (kode yang bisa digunakan kembali) yang tidak hanya berisi JSX namun juga bisa berisi logika. Kode di dalam komponen React bersifat independen dan terisolasi. Sehingga Data yang ada di dalamnya tidak akan dipengaruhi maupun mempengaruhi komponen lain, kecuali jika terjadi transaksi data antar komponen.
+Whenever your GraphQL server _does_ push data to a subscribing client, that data conforms to the structure of the executed subscription, just like it does for a query:
 
-# Membuat Function Component React
-
-Komponen React berupa fungsi (function component) adalah jenis komponen yang direkomendasikan di React. Sesuai dengan namanya, komponen ini dibuat berupa fungsi JavaScript/ES6 yang me-return elemen React (JSX).
-
-### Membuat Komponen React
-
-Komponen React dapat dibuat dengan ketentuan umum sebagai berikut ini:
-
-1.  Import library `React`
-2.  Nama Fungsi diawali dengan huruf kapital
-3.  Return value dari fungsi berupa JSX dengan satu child
-
-Mari kita bahas masing-masing ketentuan di atas.
-
-### Library React Harus Berada di Dalam Scope
-
-Dikarenakan JSX akan di-transform ke dalam bentuk javascript oleh compiler (babel). maka kita perlu mengikut sertakan library `React` di setiap scope atau cakupan kode yang menggunakan JSX. Sebagai contoh berikut ini komponen react yang valid :
-
-```jsx
-import React from "react";
-
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Selamat Datang di Reactjs</h1>
-      <p>Kita belajar membuat komponen</p>
-    </div>
-  );
-}
-```
-
-### Nama Fungsi Diawali dengan Huruf Kapital
-
-Sebuah fungsi dengan nama yang diawali dengan huruf kapital dan me-return JSX disebut React function component, selanjutnya kita bisa menggunakan custom tag html dengan nama fungsi tersebut. Sedangkan nama fungsi biasa diawali dengan huruf kecil.
-
-### Return Value Hanya Terdiri dari Satu Child
-
-Sebuah fungsi tidak dianggap sebagai komponen React jika tidak menggunakan JSX atau method `React.createElement()`. Selain itu hanya boleh ada sebuah scope untuk JSX pada return-valuenya.
-
-# State
-
-State adalah salah satu konsep penting dalam ekosistem React. State bisa dikatakan sebagai data privat dari sebuah komponen, bersifat encapsulated yang berarti state dari sebuah komponen tidak bisa dipengaruhi dan mempengaruhi state komponen lain secara langsung. Selain itu, nilai pada state akan tereset ke nilai awal ketika halaman direload atau ketika komponen dirender kembali.
-
-# Penanganan Event pada React
-
-Handling atau penanganan event pada elemen React mirip dengan [event yang ada pada Javascript](https://www.kodekami.com/reactjs/javascript-for-learn-react/events-pada-javascript/), namun dengan beberapa perbedaan yaitu:
-
-- Penamaan event pada React menggunakan **camelCase**, tidak lagi _lowercase_
-- Event handler diisi dengan nama fungsi saja, tidak perlu pemanggilan fungsi.
+    { "data": { "commentAdded": { "id": "123", "content": "What a thoughtful and well written post!" } } }

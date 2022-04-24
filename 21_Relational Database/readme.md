@@ -4,100 +4,54 @@
 
 ## ==== React Fundamental====
 
-# Rendering Hello World (HTML, Javascript, React)
+Database relasional merupakan jenis Database Management System (DBMS) yang terbaru, yang memberikan gambaran atau bagam skema yang menjelaskan tentang hubungan antar tabel bisa dilakuan di dalam sebuah database. Model database ini digagas oleh seorang pakar database bernama EF codd.
 
-Membuat `Hello World` pada file HTML sangat mudah, kita hanya perlu menggunakan tag HTML yang sesuai. Namun kali ini kita akan membuat Hello World dengan menggunakan 3 cara, yakni cara HTML, javascript biasa, dan cara React.
+Jenis database relasional ini merupakan jenis database yang paling sederhana disamping jenis database pendahulunya yaitu database Hierarki **_(Hierarchical Database Model_**_)_, dan database Jaringan **_(Network Database Model)_.** Jenis database relasional menggunakan strukrur database 2D (dimensi). Perlu diketahui bahwa kedua model pendahulu relasional database yaitu database hirarki dan database jaringan untuk saat ini sudah tidak banyak digunakan, hal ini karena adanya berbagai kelemahan dan fungsionalitas yang ada dari kedua jenis database tersebut yang sudah memenuhi spesifikasj atau kebutuhan aplikasi modern saat ini, yang menuntut sistem database yang lebih kompleks dan terstruktur untuk memenuhi berbagai kebutuhan komputasi skala besar saat ini, baik dalam skala personal maupun Enterprise.
 
-> [HTML Online IDE](https://www.kodekami.com/reactjs/tools/online-code-compiler/#html-tryit-editor-w3schools) memudahkan kita untuk mencoba jalankan kode HTML
+## Bagaimana Relasi Database bisa Terhubung ?
 
-### Hello World di HTML
+Untuk membuat sistem basis data yang terpadu kita perlu menghubungkan terlebih dahulu kedua tabel yang ingin Kita dikoneksikan. Untuk setiap tabel yang ada terdapat [field](https://dosenit.com/software/dbms/mysql/fungsi-string-field-pada-mysql) kunci atau primary [key](https://dosenit.com/php/fungsi-key-simplexml-php), primary key ini dikoneksikan padatabel kedua sehingga di tabel kedua ini menjadi foreign key. Dengan relational database ini Kita cukup mengubungkan kedu tabel yang ada melalui foreign key.
 
-Hello world dapat dibuat dengan tags HTML tanpa menggunakan javascript sama sekali.
+## Konsep RDBMS
 
-### Hello World di Javascript
+Ilmu yang mempelajari tentang konsep Database Relasional disebut _**Database Relational System**_. Database relasional System merupakan konsep yang muncul setelah adanya konsep database pendahulunya yaitu network database dan hierarchycal database. Dalam jenis database relasional ini, ada penggambaran yang jelas tentang hubungan suatu tabel dengan tabel yang lain bisa dilakukan, hubungan ini digambarkan dengan garis solid yang menghubungkan antara satu field name di tabel yang satu, dengan satu fieldname di tabel yang lain. Misalnya fieldname kdpasien di tabel pasien dengan fieldname kdpasien di tabel diagnosapasien, yang saling terhubung karena adanaya kesamaan dalam fungsi dan entitas dari objek yang dimaksud. Dengan demikian, sebuah database relasional ini dirancang untuk memiliki keterkaitan antar tabelnya, menyesuaikan dengan program atau analisa sistem yang dirancang.
 
-Kita bisa membuat Hello World dengan menggunakan javascript dengan mengandalkan DOM (Document Object Model). DOM ini dibuat oleh browser yang berisi hirarki struktur HTML dalam bentuk Object. Kita bisa mengakses elemen HTML pada Javascript dengan menggunakan DOM.
+## Aplikasi RDBMS
 
-### Hello World pada React
+Untuk diketahui Database adalah sekumpulan tabel yag disimpan dalam bentuk [file](https://dosenit.com/ilmu-komputer/file)/elektronik dan dikelompokkan berdasarkan skema yang sudah dibuat oleh user. Untuk melakukan pembuatan struktur, pengisian, pengeditan, dan penghapusan database diperlukan software atau perangkat lunak, dan jenis perangkat lunak yang dimaksud adalah RDBMS atau disebut Relational Database Management System. Sedangkan command yang diterapkan untuk melakukan berbagai manipulasi terhadap database dan tabel yang ada di software RDBMS disebut [SQL](https://dosenit.com/sql/sql) (Structured [Query](https://dosenit.com/php/fungsi-mysqli-query-php) Language).
 
-Membuat Hello World pada React mirip dengan membuat Hello World pada Javascript, perbedaannya adalah kita perlu menggunakan dependencies berupa React, React-DOM, dan Babel dari npm. Babel digunakan untuk mengubah kode javascript yang digunakan oleh React agar bisa dijalankan di browser.
+RDBMS adalah sebuah software komputer yang digunakan untuk membuat, menyunting dan menanajemen basis data yang telah mendukung skema relational. Pemanfaatan program ini sangat banyak sekali contohnya, misalnya dalam sistem apoteker, sistem penyewaan (Rental) mobir, sistem penjualan barang, sistem kepustakaan, sistem pertokoan, dan masih banyak lagi. RDBMS sendiri memiliki tingkatan sesuai skala yang akan digunakan, ada RDBMS yang digunakan untuk small-[scale](https://dosenit.com/python/scale-python) database semisal aplikasi stock sederhana, aplikasi perpustakaan, dan ada aplikasi large-scale database yaitu aplikasi RDBMS dengan skala yang lebih luas mencakup kebutuhan enteprise, contohnya adalah aplikasi Oracle yang digunakan untuk menangani kebutuhan akan manajemen Perusahaan berskala besar (dengan jumlah record yang sangat besar).
 
-# Pengenalan React Web API
+## Jenis-jenis Database Relasional
 
-`React` adalah titik awal dari library React. Jika Anda memuat React dari tag `<script>` seperti pada contoh Hello World sebelumnya, React API tingkat atas ini tersedia secara global, sehingga bisa digunakan di script manapun. Namun Jika Anda menggunakan ES6 dengan npm (Nodejs), Anda perlu menulis `import React from 'react'`.
+Secara umum ada 3 jenis database relasional yaitu :
 
-Pada tutorial ini, kita akan mengkonversi kode HTML yang menggunakan [HTML DOM API](https://www.kodekami.com/redirect?url=https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) menjadi kode HTML yang menggunakan React API.
+**1. One to One (1 to 1)**
 
-Terdapat beberapa React API yang bisa Anda temukan di [React Documentation](https://www.kodekami.com/redirect?url=https://reactjs.org/docs/react-api.html).
+Relasi database model ini terjadi apalabila sebuah data terdapat pada 2 buah tabel, dan hanya diperbolehkan satu data saja pada masing masing tabel (unique record), sama halnya seperti primary key, record yang ada pada model ini tidak boleh ada yang sama.
 
-`React.createElement` adalah React API yang digunakan untuk membuat elemen baru, React API ini merupakan salah satu API yang paling banyak digunakan. Sintaksnya kurang lebih seperti ini `React.createElement(typeElement, props, children)`
+**2. One to Many (1 to n)**
 
-# Pengenalan React JSX
+Relasi database model ini membolehkan data yang sama pada tabel kedua, tapi hanya membolehkan data yang bersifat unique (unik) pada tabel pertama. Jadi pada model tabel kedua boleh memiliki beberapa data yang sama.
 
-JSX (JavaScript Syntax Extension) adalah sintaks seperti XML/HTML yang digunakan oleh React dalam bahasa ES6 (ECMAScript 2015) agar HTML dapat ditulis di dalam kode JavaScript/React. Sintaksnya digunakan untuk mengubah teks HTML yang ditemukan dalam file JSX menjadi objek JavaScript standar, pengubahan ini menggunakan compiler ES6 ke Javascript seperti **Babel**.
+**3. Many to many (n to m)**
 
-Pada dasarnya, Anda dapat menulis struktur seperti HTML/XML yang ringkas (misalnya, Document Object Model) dengan menggunakan JSX dalam file yang sama saat Anda menulis kode JavaScript, kemudian Babel akan mengubah JSX menjadi kode JavaScript murni.
+Berbeda dengan kedua model diatas, relasi database model ini membolehkan beberapa data yang sama baik pada tabel pertama maupun tabel kedua. Dengan demikian tidak ada unique record di kedua tabel tersebut.
 
-# Pengenalan Komponen React
+**Tujuan model relasional database**
 
-Komponen React adalah bagian-bagian UI dari aplikasi React. Dimulai dari bagian UI terbesar (seluruh tampilan aplikasi) sampai ke bagian UI terkecil seperti input, button dll. Komponen React dapat ditulis berupa class dan bisa berupa function. Pada tutorial ini kami berfokus pada pembuatan komponen React dengan fungsi (function component React).
+- Menciptakan konsep database DBMS yang terintegrasi dan bersifat standalone
+- Menciptakan DBMS yang konsisten dan menghindari terjadinya data redundancy (duplikasi data) dengan menerapkan konsep normalisasi data, dengan tujuan untuk meningkatkan kemampuan dalam mengambil dan juga memproses data.
 
-Kita bisa mengibaratkan komponen React sebagai mainan [Lego](https://www.kodekami.com/redirect?url=https://www.google.com/search?q=lego). Sebuah mainan Lego yang utuh terdiri dari beberapa komponen, dan komponen-komponen tersebut bisa terdiri dari beberapa komponen juga, sampai ke komponen paling sederhana.
+**Karakteristik Database Relasional**
 
-Berikut ini contoh pohon komponen (component tree), sebuah komponen besar bisa terdiri dari komponen yang lebih kecil dan seterusnya.
+- Struktur tabel bersifat Tabular
+- Satu [bahasa pemrograman](https://dosenit.com/kuliah-it/pemrograman/macam-macam-bahasa-pemrograman) atau sintaksis yang ada dapat digunakan untuk semua user
+- Field dikoneksikan melalui value didalam record tabel
 
-![Contoh component tree](https://cdn.statically.io/img/raw.githubusercontent.com/f=auto/elfaro1453/blog-assets/98fe2b66cf2a3485ad62777d381a7c3ced1a58be/docs-javascript/react-components.png)
+**Kelebihan Database Relasional**
 
-**Component Tree**: Komponen bisa terdiri dari komponen lain
-
-Tujuan dari pembuatan komponen React adalah _reusable code_ (kode yang bisa digunakan kembali) yang tidak hanya berisi JSX namun juga bisa berisi logika. Kode di dalam komponen React bersifat independen dan terisolasi. Sehingga Data yang ada di dalamnya tidak akan dipengaruhi maupun mempengaruhi komponen lain, kecuali jika terjadi transaksi data antar komponen.
-
-# Membuat Function Component React
-
-Komponen React berupa fungsi (function component) adalah jenis komponen yang direkomendasikan di React. Sesuai dengan namanya, komponen ini dibuat berupa fungsi JavaScript/ES6 yang me-return elemen React (JSX).
-
-### Membuat Komponen React
-
-Komponen React dapat dibuat dengan ketentuan umum sebagai berikut ini:
-
-1.  Import library `React`
-2.  Nama Fungsi diawali dengan huruf kapital
-3.  Return value dari fungsi berupa JSX dengan satu child
-
-Mari kita bahas masing-masing ketentuan di atas.
-
-### Library React Harus Berada di Dalam Scope
-
-Dikarenakan JSX akan di-transform ke dalam bentuk javascript oleh compiler (babel). maka kita perlu mengikut sertakan library `React` di setiap scope atau cakupan kode yang menggunakan JSX. Sebagai contoh berikut ini komponen react yang valid :
-
-```jsx
-import React from "react";
-
-export default function App() {
-  return (
-    <div className="App">
-      <h1>Selamat Datang di Reactjs</h1>
-      <p>Kita belajar membuat komponen</p>
-    </div>
-  );
-}
-```
-
-### Nama Fungsi Diawali dengan Huruf Kapital
-
-Sebuah fungsi dengan nama yang diawali dengan huruf kapital dan me-return JSX disebut React function component, selanjutnya kita bisa menggunakan custom tag html dengan nama fungsi tersebut. Sedangkan nama fungsi biasa diawali dengan huruf kecil.
-
-### Return Value Hanya Terdiri dari Satu Child
-
-Sebuah fungsi tidak dianggap sebagai komponen React jika tidak menggunakan JSX atau method `React.createElement()`. Selain itu hanya boleh ada sebuah scope untuk JSX pada return-valuenya.
-
-# State
-
-State adalah salah satu konsep penting dalam ekosistem React. State bisa dikatakan sebagai data privat dari sebuah komponen, bersifat encapsulated yang berarti state dari sebuah komponen tidak bisa dipengaruhi dan mempengaruhi state komponen lain secara langsung. Selain itu, nilai pada state akan tereset ke nilai awal ketika halaman direload atau ketika komponen dirender kembali.
-
-# Penanganan Event pada React
-
-Handling atau penanganan event pada elemen React mirip dengan [event yang ada pada Javascript](https://www.kodekami.com/reactjs/javascript-for-learn-react/events-pada-javascript/), namun dengan beberapa perbedaan yaitu:
-
-- Penamaan event pada React menggunakan **camelCase**, tidak lagi _lowercase_
-- Event handler diisi dengan nama fungsi saja, tidak perlu pemanggilan fungsi.
+- Model tampilan / View Tabular dan Query nya berupa table
+- Tidak adanya variabel pointer
+- Kemampuan operator yang baik
+- User-friendly

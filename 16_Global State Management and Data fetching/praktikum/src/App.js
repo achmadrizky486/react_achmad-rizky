@@ -1,17 +1,17 @@
-import React from 'react'
-import Box from './pages/components/Box'
-import Header from './pages/components/Header'
-import Todoapp from './pages/Todoapp'
-import { todoList } from './dataApp';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import './App.css';
+import Home from './Pages/components/Home'
+import { store, persistor } from './store/store'
 
-const App = () => {
+function App() {
   return (
-    <>
-      {/* <Header /> */}
-      {/* <Box /> */}
-      <Todoapp todo={todoList} />
-    </>
-  )
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Home />
+      </PersistGate>
+    </Provider>
+  );
 }
 
-export default App
+export default App;

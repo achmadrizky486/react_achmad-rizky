@@ -4,6 +4,17 @@
 
 ## ==== GraphQL - Basic====
 
+![enter image description here](<https://github.com/achmadrizky486/coretan/blob/master/20_GraphQL%20%E2%80%93%20Basic/praktikum/Screenshot%20(166).png?raw=true>)
+
+![enter image description here](https://github.com/achmadrizky486/coretan/blob/master/20_GraphQL%20%E2%80%93%20Basic/praktikum/Screenshot%20%28167%29.png?raw=true)
+
+![enter image description here](https://github.com/achmadrizky486/coretan/blob/master/20_GraphQL%20%E2%80%93%20Basic/praktikum/Screenshot%20%28168%29.png?raw=true)
+
+![enter image description here](https://github.com/achmadrizky486/coretan/blob/master/20_GraphQL%20%E2%80%93%20Basic/praktikum/Screenshot%20%28169%29.png?raw=true)
+
+![enter image description here](https://github.com/achmadrizky486/coretan/blob/master/20_GraphQL%20%E2%80%93%20Basic/praktikum/Screenshot%20%28170%29.png?raw=true)
+![enter image description here](https://github.com/achmadrizky486/coretan/blob/master/20_GraphQL%20%E2%80%93%20Basic/praktikum/Screenshot%20%28171%29.png?raw=true)
+
 # Pengenalan
 
 Graphql adalah sebuah konsep baru dalam membangun sebuah API. Graphql(Query Language) dikembangkan oleh Facebook dan diimplementasikan pada sisi server. Meskipun sebuah query language tetapi Graphql ini tidak berhubungan secara langsung dengan database, dengan kata lain GraphQL tidak terbatas untuk database tertentu baik sql ataupun nosql. Posisi Graphql ini berada pada sisi client dan server yang berhubungan / mengakses suatu API. Salah satu tujuan pengembangan bahasa query ini adalah untuk mempermudah komunikasi data antara backend dan frontend/mobile aplikasi.
@@ -22,15 +33,23 @@ Perbedaan mencolok antara GraphQL dengan REST API adalah struktur output data ya
 
 Cara membaca nya adalah tampilkan teman user dengan id 12, ketika client me request endpoint tersebut maka server akan menampilkan list teman user dengan id 12. Dengan mekanisme seperti ini, yang mendefinisikan data adalah **server** maksudnya adalah yang menentukan data user apa saja yang akan diberikan kepada client seperti nama, alamat, telepon, dll adalah **server.**
 
-    {
-      user(id: 1){
-          nama,
-          alamat,
-          friends(limit:10){
-              nama
-          }
-      }
-    }
+{
+
+user(id: 1){
+
+nama,
+
+alamat,
+
+friends(limit:10){
+
+nama
+
+}
+
+}
+
+}
 
 Sedangkan jika kita menggunakan GraphQL maka yang akan mendefinisikan data yang dibutuhkan adalah pada sisi client (Frontend atau aplikasi). Mobile apps atau Frontend dapat sesuka hati dalam menentukan data apa saja yang dibutuhkan dan sesuai dengan komponen aplikasi yang sedang dikerjakan.
 
@@ -43,6 +62,7 @@ Dengan menggunakan mekanisme GraphQL ini maka :
 Tioreza Febrian — Single Endpoint
 
 - Hanya terdapat 1 buah endpoint untuk berkomunikasi dengan server untuk mendapatkan suatu data.
+
 - Client/Aplikasi dapat mendefinisikan data yang akan dibutuhkan sesuka hati sehingga akan meningkatkan efisiensi mengkonsumsi API dan Hemat pertukaran data.
 
 Keunggulan GraphQL yang lain adalah mengatasi _overfetching_.

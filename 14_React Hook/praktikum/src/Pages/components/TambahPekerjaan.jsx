@@ -24,7 +24,7 @@ function TambahPekerjaan(props) {
       };
       props.tambahPekerjaan(newData);
 
-      this.setState({
+      setData({
         id: Math.floor(Math.random() * 100) + 1,
         title: "",
         completed: true,

@@ -1,15 +1,12 @@
 import React from 'react'
-import Box from './pages/components/Box'
-import Header from './pages/components/Header'
-import Todoapp from './pages/Todoapp'
-import { todoList } from './dataApp';
+import FormCoding from './FormCoding'
+import Search from './Search'
 
 const App = () => {
   return (
     <>
-      {/* <Header /> */}
-      {/* <Box /> */}
-      <Todoapp todo={todoList} />
+      <Search />
+      <FormCoding />
     </>
   )
 }

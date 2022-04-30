@@ -4,6 +4,8 @@
 
 ## ==== Deployment====
 
+[Link] (https://taskdeploy-achmadrizky.netlify.app/)
+
 ## Pengertian
 
 Deployment adalah kegiatan yang bertujuan untuk menyebarkan aplikasi yang sudah kita buat. Harapannya aplikasi tersebut dapat diakses oleh banyak orang, tidak hanya oleh kita sendiri.

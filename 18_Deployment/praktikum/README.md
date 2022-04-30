@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Achmad Rizky
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Summary
 
-## Available Scripts
+## ==== Deployment====
 
-In the project directory, you can run:
+[Link] (https://taskdeploy-achmadrizky.netlify.app/)
 
-### `npm start`
+## Pengertian
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Deployment adalah kegiatan yang bertujuan untuk menyebarkan aplikasi yang sudah kita buat. Harapannya aplikasi tersebut dapat diakses oleh banyak orang, tidak hanya oleh kita sendiri.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Surge.sh
 
-### `npm test`
+Jika sebelumnya kita telah berhasil membuat React app menggunakan CRA, kali ini kita akan mencoba melakukan deployment menggunakan surge.sh. Surge.sh merupakan
+langkah pertama kita perlu meng-install package surge.sh secara global. Langkah selanjutnya, kita perlu melakukan persiapan dari React app yang telah kita, yakni dengan `yarn build` atau `npm build` . Dengan perintah tersebut, kita membuat React app kita dalam bentuk static sehingga dapat diserve oleh server surge
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![](https://cdn-images-1.medium.com/max/1600/1*yXVSjmXwkwG6zD5USbi-pA.png)Sukses deploy menggunakan surge.sh
 
-### `npm run build`
+Yang perlu diperhatikan adalah, ketika diminta memasukkan path dari project kita adalah, kita perlu mengarahkan kepada folder `build` dari React app yang kita buat.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Heroku
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Heroku merupakan salah satu perusahaan penyedia layanan *Platform as a Service (PaaS). *Untuk dapat menggunakan layanan heroku, kita perlu melakukan:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Sign Up](https://signup.heroku.com/)
+- Install [command-lint tools (CLI)](https://devcenter.heroku.com/articles/heroku-cli) Heroku
 
-### `npm run eject`
+![](https://cdn-images-1.medium.com/max/1600/1*BhGIGjEx1aQFuYFP1n1UoQ.png)Tampilan ketika kita sukses install Heroku CLI
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Selanjutnya kita dapat menggunakan React app yang telah kita buat sebelumnya untuk dideploy ke Heroku dengan cara sebagai berikut:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+git init
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Membuat Heroku app, membutuhkan akun gratis di Heroku.com
+heroku create -b
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Mengarahkan root dari directory kita ke folder build
+echo '{ "root": "build/" }' > static.json
 
-## Learn More
+# Menghapus folder build dari .gitignore
+sed '/build/d' .gitignore > .gitignore.new && mv .gitignore.new .gitignore
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Build, commit, deploy!
+yarn build
+git add .
+git commit -m "Deploy to Heroku!"
+git push heroku master
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
+![](https://cdn-images-1.medium.com/max/1600/1*f9BECNOhME8Q9onfXtGreg.png)Gagal deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Jika ada yang mengalami gagal seperti yang diatas, kita perlu masuk ke dalam halaman Dashboard akun Heroku. Masuk kedalam nama apps yang kita buat dan ada di tab Deploy
 
-### Analyzing the Bundle Size
+![](https://cdn-images-1.medium.com/max/1600/1*lRfLgYdF6y8r6WNMI7PQJA.png)Dashboard Heroku tab Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![](https://cdn-images-1.medium.com/max/1600/1*_DLlO9XxHnUmDyxtHr-Qew.png)Sukses Deploy ke Heroku!
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React](https://medium.com/tag/react?source=post)
+- [Heroku](https://medium.com/tag/heroku?source=post)
+- [Surge](https://medium.com/tag/surge?source=post)
+- [Deploy](https://medium.com/tag/deploy?source=post)
+- [JavaScript](https://medium.com/tag/javascript?source=post)
